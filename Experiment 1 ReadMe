@@ -1,0 +1,86 @@
+README – Experiment 1
+Employee Information Analysis using Python
+Objective
+
+The objective of this experiment is to perform Exploratory Data Analysis (EDA) on an employee dataset using Python. The experiment analyzes employee information such as salary, department, gender, age, and experience, and visualizes the results using graphs.
+
+Workflow / Pipeline
+
+Start
+   │
+   ▼
+Import Required Libraries
+   │
+   ▼
+Load CSV Dataset using Pandas
+   │
+   ▼
+Inspect Dataset
+   │
+   ▼
+Perform Individual Analysis Questions
+   │
+   ├────────► Q1 Average Salary by Department
+   │
+   ├────────► Q2 Employee Count by Department
+   │
+   ├────────► Q3 Gender Distribution
+   │
+   ├────────► Q4 Salary Distribution
+   │
+   ├────────► Q5 Experience vs Salary
+   │
+   ├────────► Q6 Top 10 Highest Paid Employees
+   │
+   ├────────► Q7 Maximum Salary in Each Department
+   │
+   ├────────► Q8 Employees Above Average Salary
+   │
+   ├────────► Q9 Average Experience per Department
+   │
+   └────────► Q10 Age Distribution
+   │
+   ▼
+Display Results
+
+Libraries Used
+Pandas
+
+Purpose
+
+Reads CSV files
+Stores data in DataFrame
+Data manipulation
+
+Main Functions
+
+read_csv()
+groupby()
+mean()
+count()
+max()
+sort_values()
+value_counts()
+nlargest()
+reset_index()
+
+
+Matplotlib
+
+Purpose
+
+Creates graphs.
+
+Functions
+
+plt.bar()
+plt.hist()
+plt.scatter()
+plt.pie()
+plt.xlabel()
+plt.ylabel()
+plt.title()
+plt.grid()
+plt.show()
+
+
