@@ -9,12 +9,14 @@ The experiments are implemented using **Google Colab** and Python libraries such
 ## Repository Structure
 
 ```text
-NLP-Lab/
+NLP-Lab-Work/
 │
 ├── 2.1_text_data.txt
 ├── 2.2_tokenization_data.txt
 ├── 2.3_clean_data.txt
 ├── 4.1_4.2_input.txt
+├── input_sub_word_data.txt
+├── corpus_sentencepiece.vocab
 │
 ├── Experiment-1.docx
 ├── Experiment-3.docx
@@ -24,12 +26,25 @@ NLP-Lab/
 ├── Experiment_2.ipynb
 ├── Experiment_3.ipynb
 ├── Experiment_4.ipynb
+├── Experiment_5.ipynb
 │
 ├── README.md
 └── employee_information_100.csv
 ```
 
-> **Note:** The Experiment 4 DOCX filename is shortened in the GitHub screenshot. Replace `Experiment-4_Term_Frequency_and_NER.docx` above with the exact filename if it differs.
+## Data Files Used Across Experiments
+
+Each data file in this repository is used by one or more of the experiments:
+
+| Data File | Used In |
+|---|---|
+| `employee_information_100.csv` | **Experiment 1** – Employee Data Analysis (EDA on the employee dataset) |
+| `2.1_text_data.txt` | **Experiment 2** – Text Preprocessing (2.1: cleaning, lowercasing, punctuation and number removal) |
+| `2.2_tokenization_data.txt` | **Experiment 2** – Tokenization (2.2: manual, NLTK, spaCy and regex tokenization) |
+| `2.3_clean_data.txt` | **Experiment 2** – Stop Word Removal (2.3: filtering stop words from tokenized text) |
+| `4.1_4.2_input.txt` | **Experiment 4** – Term Frequency & NER (4.1 spaCy-based TF/NER, 4.2 manual TF without an NLP toolkit, 4.3 manual TF-IDF) |
+| `input_sub_word_data.txt` | **Experiment 5** – Subword Tokenization (5.1 BPE, 5.2 SentencePiece - both training and inference) |
+| `corpus_sentencepiece.vocab` | **Experiment 5** – Generated vocabulary file produced while training the SentencePiece tokenizer |
 
 ---
 
@@ -303,6 +318,66 @@ TF-IDF assigns greater importance to terms that occur frequently in a particular
 
 ---
 
+# Experiment 5 - Subword Level Tokenization and POS Tagging
+
+## Objective
+
+Implement **subword-level tokenization** using BPE and SentencePiece tokenizers, and **Part-of-Speech (POS) tagging** using both spaCy and NLTK.
+
+## Topics Covered
+
+- Byte Pair Encoding (BPE)
+- Subword Tokenization
+- Pretrained vs Trained Tokenizers
+- HuggingFace `tokenizers` and `transformers`
+- SentencePiece
+- Part-of-Speech (POS) Tagging
+- Token Frequency Analysis
+
+## Libraries Used
+
+- tokenizers
+- transformers
+- sentencepiece
+- spaCy
+- NLTK
+- collections
+
+## Experiments
+
+### 5.1 Subword-Level Tokenization Using a BPE-based Tokenizer
+
+Tokenize the input text into subword units and display the generated tokens with their corresponding token IDs.
+
+**a. Using a pretrained model** - Load the pretrained `gpt2` BPE tokenizer from HuggingFace `transformers`.
+**b. Without a pretrained model** - Build a BPE tokenizer using the `tokenizers` library and train it from scratch on `input_sub_word_data.txt` using `BpeTrainer`.
+
+### 5.2 Subword-Level Tokenization Using a SentencePiece Tokenizer
+
+Tokenize the input text into subword units and display the generated tokens with their corresponding token IDs.
+
+**a. Using a pretrained model** - Load the SentencePiece-based `google/mt5-small` tokenizer.
+**b. Without a pretrained model** - Train a SentencePiece BPE model from scratch on `input_sub_word_data.txt` using `spm.SentencePieceTrainer` (generates the `corpus_sentencepiece.vocab` file), then tokenize with the trained model.
+
+### 5.3 POS Tagging on a Given Sentence
+
+Perform Part-of-Speech tagging on:
+
+```text
+"The young student is reading an interesting book in the library."
+```
+
+and display the unique token, POS tag, and description of each POS tag.
+
+**a. Using spaCy** - `en_core_web_sm` pipeline with `token.pos_` and `spacy.explain()`.
+**b. Using NLTK** - `nltk.word_tokenize()` followed by `nltk.pos_tag()`.
+
+### 5.4 POS Tagging with Token Frequency
+
+Perform POS tagging on the full input text using **spaCy** and display the unique token, its POS tag, the description of each token, and its frequency of occurrence in the text.
+
+---
+
 # Technologies Used
 
 - Python 3
@@ -313,6 +388,9 @@ TF-IDF assigns greater importance to terms that occur frequently in a particular
 - Seaborn
 - NLTK
 - spaCy
+- HuggingFace transformers
+- HuggingFace tokenizers
+- SentencePiece
 - Regular Expressions (re)
 
 ---
@@ -339,6 +417,11 @@ After completing these experiments, the following concepts were understood:
 - Inverse Document Frequency (IDF)
 - TF-IDF
 - Named Entity Recognition (NER)
+- Byte Pair Encoding (BPE)
+- Subword-level Tokenization
+- Pretrained vs Trained Tokenizers
+- SentencePiece
+- Part-of-Speech (POS) Tagging
 - NLP Preprocessing Pipelines
 - Toolkit-based and Manual NLP Implementations
 - Python Libraries for NLP and Data Analysis
