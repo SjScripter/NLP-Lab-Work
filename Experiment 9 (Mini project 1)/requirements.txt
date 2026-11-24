@@ -1,0 +1,8 @@
+streamlit>=1.30.0
+feedparser>=6.0.10
+trafilatura>=1.6.0
+newspaper3k>=0.2.8
+spacy>=3.7.0
+rouge-score>=0.1.2
+nltk>=3.8.1
+requests>=2.31.0
