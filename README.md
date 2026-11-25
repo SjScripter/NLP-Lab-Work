@@ -1,8 +1,8 @@
 # Natural Language Processing (NLP) Lab Experiments
 
-This repository contains Python implementations of fundamental **Natural Language Processing (NLP)** concepts, **Deep Learning**, and **Exploratory Data Analysis (EDA)** performed as part of laboratory experiments.
+This repository contains complete Python implementations of fundamental **Natural Language Processing (NLP)** concepts, **Deep Learning**, and **Multilingual Language Modeling** performed as part of laboratory experiments and course mini-projects (Experiments 1 through 10).
 
-The experiments are implemented using **Jupyter Notebooks / Google Colab** with industry-standard libraries including **Pandas, NumPy, Matplotlib, Seaborn, NLTK, spaCy, PyTorch, Scikit-Learn, HuggingFace Transformers, HuggingFace Tokenizers, and SentencePiece**.
+The experiments are implemented using **Jupyter Notebooks / Google Colab** with industry-standard libraries including **Pandas, NumPy, Matplotlib, Seaborn, NLTK, spaCy, PyTorch, Scikit-Learn, HuggingFace Transformers, HuggingFace Tokenizers, SentencePiece, and Gensim**.
 
 ---
 
@@ -28,6 +28,8 @@ NLP-Lab-Work/
 ├── Experiment-6.docx
 ├── Experiment-7.docx
 ├── Experiment-8.docx
+├── Experiment-9.docx
+├── Experiment-10.docx
 │
 ├── Experiment_1.ipynb
 ├── Experiment_2.ipynb
@@ -37,6 +39,8 @@ NLP-Lab-Work/
 ├── Experiment_6.ipynb
 ├── Experiment_7.ipynb
 ├── Experiment_8.ipynb
+├── Experiment_9.ipynb
+├── Experiment_10.ipynb
 │
 └── README.md
 ```
@@ -58,110 +62,80 @@ NLP-Lab-Work/
 ---
 
 # Experiment 1 - Employee Data Analysis
-
-## Objective
-Perform **Exploratory Data Analysis (EDA)** on an employee dataset using Python.
-
-## Topics Covered
-- Reading CSV files using Pandas
-- Data aggregation and department-wise analysis
-- Salary statistics and distribution histograms
-- Experience vs. Salary scatter plots
-- Top 10 highest-paid employees
-- Gender and age distributions with pie charts and histograms
+- Exploratory Data Analysis (EDA) on structured enterprise records using Pandas and Matplotlib.
+- Departmental salary averages, gender balance pie charts, salary distribution histograms, experience vs. salary scatter plots, and workforce age distributions.
 
 ---
 
 # Experiment 2 - Text Preprocessing & NLP
-
-## Objective
-Perform basic **Natural Language Processing (NLP) preprocessing** techniques on text data.
-
-## Topics Covered
-- Text Cleaning (casing, punctuation, digits, whitespace)
-- Tokenization (Manual, NLTK, spaCy, and Regex)
-- Stop Word Removal and vocabulary normalization
+- Text sanitation (casing normalization, punctuation/digit removal).
+- Comparative word and sentence tokenization across NLTK, spaCy, and regular expressions.
+- Stopword elimination and vocabulary reduction metrics.
 
 ---
 
 # Experiment 3 - Stemming, Lemmatization & Regular Expressions
-
-## Objective
-Understand and implement **stemming, lemmatization, and regular expression-based information extraction** using Python.
-
-## Topics Covered
-- Stemming using the Porter Stemmer (`nltk.stem.PorterStemmer`)
-- Lemmatization using WordNet (`nltk.stem.WordNetLemmatizer`)
-- Regular Expressions (`re`) to extract Emails, URLs, Phone numbers, Hashtags, and Mentions
+- Heuristic suffix stripping with the Porter Stemmer (`nltk.stem.PorterStemmer`).
+- Morphological dictionary reduction with WordNet Lemmatizer (`nltk.stem.WordNetLemmatizer`).
+- Regular expression parsing (`re`) for emails, URLs, telephone numbers, hashtags, and social handles.
 
 ---
 
 # Experiment 4 - Term Frequency & Named Entity Recognition (NER)
-
-## Objective
-Implement Term Frequency analysis with and without NLP toolkits, and perform Named Entity Recognition.
-
-## Topics Covered
-- SpaCy NER (`PERSON`, `ORG`, `GPE`, `DATE`, etc.) and frequency computation
-- Term Frequency analysis from scratch without NLP libraries
-- Full TF-IDF implementation from scratch across multiple documents
+- Entity extraction using spaCy pipeline (`PERSON`, `ORG`, `GPE`, `DATE`, etc.).
+- Term frequency computation from scratch without NLP toolkits.
+- Multi-document TF-IDF mathematical derivation and matrix generation from first principles.
 
 ---
 
 # Experiment 5 - Subword Level Tokenization and POS Tagging
-
-## Objective
-Implement **subword-level tokenization** using BPE and SentencePiece tokenizers, and **Part-of-Speech (POS) tagging** using both spaCy and NLTK.
-
-## Topics Covered
-- **5.1 BPE Tokenization**: Pretrained (`gpt2`) and Trained from Scratch (`tokenizers.BpeTrainer`).
-- **5.2 SentencePiece Tokenization**: Pretrained (`google/mt5-small`) and Trained from Scratch (`sentencepiece.SentencePieceTrainer`).
-- **5.3 POS Tagging**: SpaCy (`en_core_web_sm`) and NLTK (`nltk.pos_tag`).
-- **5.4 POS Frequency Analysis**: Unique tokens, grammatical tag explanations, and corpus occurrence frequencies.
+- **BPE Tokenization**: Pretrained (`gpt2`) and Custom-trained (`tokenizers.BpeTrainer`).
+- **SentencePiece Tokenization**: Pretrained (`google/mt5-small`) and Custom-trained (`sentencepiece.SentencePieceTrainer`).
+- **POS Tagging**: Comparative grammatical tagging using spaCy and NLTK.
+- **Corpus Frequency Profiling**: Token occurrences mapped with detailed linguistic explanations.
 
 ---
 
 # Experiment 6 - GloVe Word Embeddings & Statistical Language Modeling
-
-## Objective
-Implement vector word representations and probabilistic next-word prediction:
-1. **GloVe (Global Vectors for Word Representation)**:
-   - **6.1(a) GloVe From Scratch**: Build a symmetric co-occurrence matrix with harmonic distance weighting ($1/d$), optimize word and context vectors with AdaGrad against the log-bilinear least squares objective, and find words most similar to `"king"`.
-   - **6.1(b) Pretrained GloVe (Gensim)**: Load pretrained vectors (`glove-wiki-gigaword-50`), evaluate nearest neighbors for `"king"`, and demonstrate vector analogies ($\text{king} - \text{man} + \text{woman} \approx \text{queen}$).
-2. **Statistical Language Model (N-Gram Approach)**:
-   - Build Unigram, Bigram, and Trigram language models from scratch with sentence boundary markers (`<s>`, `</s>`).
-   - Implement Laplace (add-1 / add-$\alpha$) smoothing.
-   - Predict subsequent words given conversational contexts (e.g. `"machine learning"` $\to$ `"is"`, `"and"`).
+- **GloVe from Scratch**: Co-occurrence matrix with harmonic distance weighting ($1/d$), AdaGrad optimization, and nearest neighbor extraction for `"king"`.
+- **Pretrained GloVe (Gensim)**: Vector similarity queries and semantic analogies ($\text{king} - \text{man} + \text{woman} \approx \text{queen}$).
+- **Statistical N-Gram Language Modeling**: Unigram, Bigram, and Trigram language model with Laplace smoothing for next-word probability estimation.
 
 ---
 
 # Experiment 7 - Sentiment Analysis Using Deep Learning and Transformers
-
-## Objective
-Implement binary sentiment classification on the **IMDB Movie Reviews Dataset** comparing four architectures:
-1. **Logistic Regression (TF-IDF Baseline)**: N-gram TF-IDF features with L2 regularization.
-2. **Bidirectional LSTM Classifier**: PyTorch recurrent neural network capturing sequential token dependencies.
-3. **Vanilla Transformer Encoder**: PyTorch multi-head self-attention with sinusoidal positional encoding.
-4. **Pretrained BERT (`bert-base-uncased`)**: Fine-tuned bidirectional transformer representations.
-
-## Evaluation
-- Metrics: **Accuracy, Precision, Recall, and F1-Score**.
-- **Confusion Matrices** for each model comparing true vs. predicted sentiment.
-- Inference testing on custom unseen movie reviews.
+- Binary sentiment classification on the IMDB Movie Reviews dataset comparing:
+  1. Logistic Regression (TF-IDF Baseline)
+  2. Bidirectional LSTM (PyTorch)
+  3. Vanilla Transformer Encoder (PyTorch)
+  4. Pretrained BERT (`bert-base-uncased`)
+- Evaluation using Accuracy, Precision, Recall, F1-Score, and $2 \times 2$ Confusion Matrices.
 
 ---
 
 # Experiment 8 - Abstractive Text Summarization Using Multilingual Transformers
+- Multilingual sequence-to-sequence summarization on the **Hindi XL-Sum dataset** comparing:
+  1. `google/mt5-small` (Span corruption encoder-decoder)
+  2. `facebook/mbart-large-50-many-to-many-mmt` (Denoising autoencoder with `hi_IN` prefixes)
+- Evaluation via surface n-gram overlap (**ROUGE-1, ROUGE-2, ROUGE-L**) and contextual vector alignment (**mBERTScore**).
 
-## Objective
-Implement and benchmark abstractive text summarization using sequence-to-sequence multilingual models on the **Hindi XL-Sum (Cross-Lingual Summarization) dataset**:
-1. **mT5 (Multilingual Text-to-Text Transfer Transformer)** (`google/mt5-small`): 101-language span corruption pretrained encoder-decoder.
-2. **mBART (Multilingual Bidirectional Auto-Regressive Transformers)** (`facebook/mbart-large-50-many-to-many-mmt`): Sequence-level denoising autoencoder with Hindi language tag prefixes (`hi_IN`).
+---
 
-## Evaluation Metrics
-- **Lexical Overlap Metrics**: ROUGE-1, ROUGE-2, and ROUGE-L.
-- **Contextual Semantic Metric**: Multilingual BERTScore (mBERTScore: Precision, Recall, and F1).
-- Qualitative comparison of generated summaries versus ground-truth references.
+# Experiment 9 - Multiclass News Article Classification
+- Thematic document classification across four classes (*World, Sports, Business, Sci/Tech*) on the **AG News** dataset comparing:
+  1. Classical ML (TF-IDF + LinearSVC) — 91.28% Accuracy, 0.12 ms/sample latency
+  2. Deep Learning (Bi-LSTM with Word Embeddings) — 88.45% Accuracy
+  3. Pretrained Transformer (Fine-Tuned DistilBERT) — 93.85% Accuracy, 93.84% F1
+- Evaluation via Normalized Confusion Matrices, Accuracy vs. Latency trade-offs, and live headline inference.
+
+---
+
+# Experiment 10 - Low-Resource Neural Machine Translation (NMT)
+- Bidirectional neural machine translation for low-resource Indic languages using transfer learning on the **WMT 2026 Shared Task on Low-Resource Indic Language Translation**:
+  1. Zero-shot Multilingual Baseline (`facebook/nllb-200-distilled-600M`)
+  2. Domain Fine-Tuned Bidirectional NMT Model (English $\leftrightarrow$ Indic)
+  3. Recurrent Seq2Seq with Attention and Custom Transformer comparisons
+- Quantitative benchmark using **SacreBLEU**, **chrF++**, and **Translation Edit Rate (TER)** in both translation directions (En $\to$ X and X $\to$ En).
 
 ---
 
@@ -176,6 +150,7 @@ Implement and benchmark abstractive text summarization using sequence-to-sequenc
 - Scikit-Learn
 - HuggingFace Transformers & Datasets
 - HuggingFace Tokenizers & SentencePiece
+- NLLB-200, DistilBERT, BERT, mT5, mBART
 - Gensim
 
 ---
@@ -183,5 +158,6 @@ Implement and benchmark abstractive text summarization using sequence-to-sequenc
 # Author
 
 **Sarthak Jakhmola**  
-B.Tech CSE (AI & ML)  
-UPES, Dehradun
+SAP ID: 500122482 | Roll No: R2142231632  
+B.Tech CSE (AI & ML), Semester VII  
+School of Computer Science, UPES, Dehradun
